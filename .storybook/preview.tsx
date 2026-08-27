@@ -50,6 +50,7 @@ const preview: Preview = {
       storySort: {
         order: [
           'Welcome',
+          'Guides',
           'Migration Guides',
           'Form Elements',
           'Content Presentation',

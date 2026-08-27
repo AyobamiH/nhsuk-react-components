@@ -41,6 +41,16 @@ import { Button, DateInput, Form } from 'nhsuk-react-components';
 </Form>;
 ```
 
+## Server-side rendering
+
+Version 6.0.0 and later support server-side rendering (SSR) and React Server Components
+(RSC). Components render HTML on the server, then components that need JavaScript are
+enhanced after hydration.
+
+Read the [server-side rendering guide](/docs/server-side-rendering.md) for the required
+NHS.UK frontend styles, browser feature detection, React Server Component imports and
+progressive enhancement checks.
+
 ## Development
 
 To run this project locally, set up Yarn using [Node.js corepack](https://github.com/nodejs/corepack#readme)

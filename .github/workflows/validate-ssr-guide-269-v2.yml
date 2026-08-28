@@ -38,7 +38,7 @@ jobs:
           from pathlib import Path
 
           readme = Path("README.md").read_text(encoding="utf-8")
-          story = Path("src/server-side-rendering.stories.mdx").read_text(encoding="utf-8")
+          story = Path("stories/Guides/ServerSideRendering.mdx").read_text(encoding="utf-8")
           button = Path("src/components/form-elements/button/Button.tsx").read_text(encoding="utf-8")
 
           assert Path("docs/server-side-rendering.md").is_file()

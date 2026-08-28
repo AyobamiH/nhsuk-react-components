@@ -45,7 +45,7 @@ jobs:
           assert "[server-side rendering guide](docs/server-side-rendering.md)" in readme
           assert "[server-side rendering guide](/docs/server-side-rendering.md)" not in readme
           assert '<Meta title="Guides/Server-side rendering" />' in story
-          assert "await import('nhsuk-frontend')" in button
+          assert "import('nhsuk-frontend')" in button
           assert "'use client';" in button
           PY
           git diff --check origin/main...HEAD

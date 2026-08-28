@@ -38,7 +38,7 @@ jobs:
           grep -Fq '[server-side rendering guide](docs/server-side-rendering.md)' README.md
           ! grep -Fq '[server-side rendering guide](/docs/server-side-rendering.md)' README.md
           grep -Fq '<Meta title="Guides/Server-side rendering" />' src/server-side-rendering.stories.mdx
-          grep -Fq "import('nhsuk-frontend')" src/components/form-elements/button/Button.tsx
+          grep -Fq "await import('nhsuk-frontend')" src/components/form-elements/button/Button.tsx
           grep -Fq "'use client';" src/components/form-elements/button/Button.tsx
           git diff --check origin/main...HEAD
           test -z "$(git status --porcelain --untracked-files=no)"

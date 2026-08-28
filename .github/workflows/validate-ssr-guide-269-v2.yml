@@ -23,7 +23,10 @@ jobs:
           node-version-file: .nvmrc
           package-manager-cache: false
 
-      - name: Verify audited commit\n        run: test \"$(git rev-parse HEAD)\" = \"66fc09d80622afea0202c5ba75e77ae85e496355\"\n\n      - run: corepack enable
+      - name: Verify audited commit
+        run: test "$(git rev-parse HEAD)" = "66fc09d80622afea0202c5ba75e77ae85e496355"
+
+      - run: corepack enable
       - run: yarn install --immutable
       - run: yarn lint
       - run: yarn test --coverage --runInBand

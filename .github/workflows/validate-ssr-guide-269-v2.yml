@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7.0.1
         with:
-          ref: docs/ssr-guide-269
+          ref: 66fc09d80622afea0202c5ba75e77ae85e496355
           fetch-depth: 0
 
       - uses: actions/setup-node@v7.0.0
@@ -23,7 +23,7 @@ jobs:
           node-version-file: .nvmrc
           package-manager-cache: false
 
-      - run: corepack enable
+      - name: Verify audited commit\n        run: test \"$(git rev-parse HEAD)\" = \"66fc09d80622afea0202c5ba75e77ae85e496355\"\n\n      - run: corepack enable
       - run: yarn install --immutable
       - run: yarn lint
       - run: yarn test --coverage --runInBand

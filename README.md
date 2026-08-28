@@ -1,44 +1,48 @@
-# NHS.UK React components
+# NHS.UK React Components
 
-This repository contains the code for NHS.UK React components - a port of the [NHS.UK frontend components](https://github.com/nhsuk/nhsuk-frontend).
+[![CI](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/main.yml/badge.svg)](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/main.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/NHSDigital/nhsuk-react-components/badge.svg?targetFile=package.json)](https://snyk.io/test/github/NHSDigital/nhsuk-react-components?targetFile=package.json)
+[![npm](https://img.shields.io/npm/v/nhsuk-react-components)](https://www.npmjs.com/package/nhsuk-react-components)
 
-[![GitHub Actions CI Status](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions?query=workflow%3A%22CI+Build%22+branch%3Amain) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
+A React component library based on the [NHS.UK frontend library](https://github.com/nhsuk/nhsuk-frontend).
 
-## Documentation and examples
+## Installation
 
-[View documentation and examples](https://nhsdigital.github.io/nhsuk-react-components)
-
-## Install package
-
-You can install this package into your service using either `npm` or `yarn`.
+Install from npm:
 
 ```bash
-npm install --save nhsuk-react-components
+npm install nhsuk-react-components
+```
 
-# Or
+or using Yarn:
+
+```bash
 yarn add nhsuk-react-components
 ```
 
 ## Usage
 
-```jsx
+Import the components you need:
+
+```tsx
 import { Button, DateInput, Form } from 'nhsuk-react-components';
 
-<Form noValidate>
-  <DateInput
-    hint="For example, 15 3 1984"
-    legend="What is your date of birth?"
-    legendProps={{ size: 'l' }}
-    id="date-of-birth"
-    error="Date of birth must include a day"
-  >
-    <DateInput.Day />
-    <DateInput.Month error={false} />
-    <DateInput.Year error={false} />
-  </DateInput>
+const Example = () => (
+  <Form>
+    <DateInput
+      legend="What is your date of birth?"
+      legendProps={{ size: 'l' }}
+      id="date-of-birth"
+      error="Date of birth must include a day"
+    >
+      <DateInput.Day />
+      <DateInput.Month error={false} />
+      <DateInput.Year error={false} />
+    </DateInput>
 
-  <Button>Save and continue</Button>
-</Form>;
+    <Button>Save and continue</Button>
+  </Form>
+);
 ```
 
 ## Server-side rendering
@@ -47,7 +51,7 @@ Version 6.0.0 and later support server-side rendering (SSR) and React Server Com
 (RSC). Components render HTML on the server, then components that need JavaScript are
 enhanced after hydration.
 
-Read the [server-side rendering guide](/docs/server-side-rendering.md) for the required
+Read the [server-side rendering guide](docs/server-side-rendering.md) for the required
 NHS.UK frontend styles, browser feature detection, React Server Component imports and
 progressive enhancement checks.
 
@@ -69,43 +73,22 @@ Then run the following:
    yarn build --watch
    ```
 
-2. **Open documentation and examples**
+2. **Run Storybook**
 
    ```bash
    yarn storybook
    ```
 
-## Upgrading
+3. **Run tests**
 
-- [Upgrading to 1.0](/docs/upgrade-to-1.0.md)
-- [Upgrading to 2.0](/docs/upgrade-to-2.0.md)
-- [Upgrading to 3.0](/docs/upgrade-to-3.0.md)
-- [Upgrading to 4.0](/docs/upgrade-to-4.0.md)
-- [Upgrading to 5.0](/docs/upgrade-to-5.0.md)
-- [Upgrading to 6.0](/docs/upgrade-to-6.0.md)
+   ```bash
+   yarn test
+   ```
 
-## Maintainers
+## Contributing
 
-**We’re currently looking for new maintainers** If you have knowledge of React and would be willing to help maintain this library, you can [email me (Thomas Judd-Cooper)](mailto:thomas.judd-cooper1@nhs.net).
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidance.
 
-- Thomas Judd-Cooper ([GitHub](https://github.com/tomdango))
-- Sam Brown ([GitHub](https://github.com/samueldavidbrown))
-- Luke Pearson ([GitHub](https://github.com/lukepearson))
-- Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
-- Kai Spencer ([GitHub](https://github.com/KaiSpencer))
-- Ed Horsford ([GitHub](https://github.com/edwardhorsford))
+## License
 
-## Preparing releases
-
-Releases run in CI using github actions.
-
-To prepare a release create a new release TAG in github with your release version.
-
-- Create a new release with a tag like `major.minor.patch` against main.
-- If the change is a `beta` then select `pre-release` as true, this will make the `tag` point at `beta`. Otherwise the tag will be `latest`.
-
-## Thanks
-
-<a href="https://www.chromatic.com/"><img src="https://user-images.githubusercontent.com/321738/84662277-e3db4f80-af1b-11ea-88f5-91d67a5e59f6.png" width="153" height="30" alt="Chromatic" /></a>
-
-Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.

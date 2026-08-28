@@ -34,11 +34,19 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f docs/server-side-rendering.md
-          grep -Fq '[server-side rendering guide](docs/server-side-rendering.md)' README.md
-          ! grep -Fq '[server-side rendering guide](/docs/server-side-rendering.md)' README.md
-          grep -Fq '<Meta title="Guides/Server-side rendering" />' src/server-side-rendering.stories.mdx
-          grep -Fq "await import('nhsuk-frontend')" src/components/form-elements/button/Button.tsx
-          grep -Fq "'use client';" src/components/form-elements/button/Button.tsx
+          python <<'PY'
+          from pathlib import Path
+
+          readme = Path("README.md").read_text(encoding="utf-8")
+          story = Path("src/server-side-rendering.stories.mdx").read_text(encoding="utf-8")
+          button = Path("src/components/form-elements/button/Button.tsx").read_text(encoding="utf-8")
+
+          assert Path("docs/server-side-rendering.md").is_file()
+          assert "[server-side rendering guide](docs/server-side-rendering.md)" in readme
+          assert "[server-side rendering guide](/docs/server-side-rendering.md)" not in readme
+          assert '<Meta title="Guides/Server-side rendering" />' in story
+          assert "await import('nhsuk-frontend')" in button
+          assert "'use client';" in button
+          PY
           git diff --check origin/main...HEAD
           test -z "$(git status --porcelain --untracked-files=no)"
